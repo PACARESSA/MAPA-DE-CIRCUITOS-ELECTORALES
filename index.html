@@ -85,13 +85,27 @@
         }
 
         // Estilo visual por defecto de los circuitos poligonales
-        var estiloCircuitos = {
-            "color": "#ff7800",
-            "weight": 1.5,
-            "opacity": 0.65,
-            "fillColor": "#ff7800",
-            "fillOpacity": 0.2
-        };
+       function estiloCircuitos(feature) {
+
+    var electores = feature.properties.Electores || 
+                    feature.properties.electores || 
+                    0;
+
+    var color = 
+        electores <= 2500 ? '#ffffcc' :
+        electores <= 5000 ? '#a1dab4' :
+        electores <= 10000 ? '#41b6c4' :
+        electores <= 15000 ? '#2c7fb8' :
+        '#253494';
+
+    return {
+        color: "#555",
+        weight: 1,
+        opacity: 0.8,
+        fillColor: color,
+        fillOpacity: 0.6
+    };
+}
 
         // 4. Cargar el archivo GeoJSON dinámicamente
         // Nota: Asegúrate de renombrar tu archivo a "circuitos.json" y guardarlo en la misma carpeta que este HTML
