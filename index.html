@@ -111,7 +111,7 @@
         // Nota: Asegúrate de renombrar tu archivo a "circuitos.json" y guardarlo en la misma carpeta que este HTML
         var geojsonLayer;
         
-        fetch('circuitos-electorales-pba (1).json')
+        fetch('circuitos_subdivididos_corregido.geojson')
             .then(response => response.json())
             .then(data => {
                 geojsonLayer = L.geoJSON(data, {
