@@ -104,7 +104,7 @@
                     style: estiloCircuitos,
                     onEachFeature: labelCircuitos
                 }).addTo(map);
-
+map.fitBounds(geojsonLayer.getBounds());
                 // Autoajustar el zoom de la pantalla para que encuadre perfectamente todos tus circuitos cargados
                 map.fitBounds(geojsonLayer.getBounds());
             })
