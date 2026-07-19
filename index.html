@@ -123,7 +123,33 @@ map.fitBounds(geojsonLayer.getBounds());
                 map.fitBounds(geojsonLayer.getBounds());
             })
             .catch(error => console.error('Error cargando el archivo GeoJSON:', error));
+var legend = L.control({position: 'bottomright'});
 
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend');
+
+    var rangos = [
+        {color: '#ffffcc', texto: '0 - 2.500 electores'},
+        {color: '#a1dab4', texto: '2.501 - 5.000 electores'},
+        {color: '#41b6c4', texto: '5.001 - 10.000 electores'},
+        {color: '#2c7fb8', texto: '10.001 - 15.000 electores'},
+        {color: '#253494', texto: 'Más de 15.000 electores'}
+    ];
+
+    div.innerHTML = '<b>Cantidad de electores</b><br>';
+
+    rangos.forEach(function(rango) {
+        div.innerHTML +=
+        '<i style="background:' + rango.color + 
+        '; width:18px; height:18px; display:inline-block; margin-right:5px;"></i>' +
+        rango.texto + '<br>';
+    });
+
+    return div;
+};
+
+legend.addTo(map);
     </script>
 </body>
 </html>
